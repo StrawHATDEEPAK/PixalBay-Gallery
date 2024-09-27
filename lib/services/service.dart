@@ -7,21 +7,20 @@ import '../utils/http_response_handler.dart';
 import 'dart:developer' as dev;
 
 class ImageService {
+  // get images
   Future<dynamic> getImages(
       {required int page,
       required String searchWord,
       required String imageType}) async {
     var data;
     try {
-      // Map<String, String> header = {
-      //   'Content-Type': 'application/json; charset=utf-8',
-      // };
       var query = Uri.encodeComponent(searchWord);
       final response = await http.get(
         Uri.parse(
             'https://pixabay.com/api/?key=${AppConstants.pixabayApiKey}&q=$query&image_type=photo&pretty=true&per_page=20&page=$page&image_type=$imageType'),
       );
 
+      // custom reponse handler
       httpResponseHandle(
           onSuccessMsgTag: 'Get Images',
           onSuccessMsg: 'Image GET Success',

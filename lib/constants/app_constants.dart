@@ -1,3 +1,5 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class AppConstants {
-  static const String pixabayApiKey = "46199137-77a529cb363e6d6c818b8f57e";
+  static String pixabayApiKey = dotenv.env["PIXABAY_API_KEY"]!;
 }
